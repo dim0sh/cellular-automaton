@@ -41,14 +41,14 @@ impl CellGrid {
             None => (),
         }
     }
-    pub fn get_cords(&self, idx: usize, cell_size: f32) -> (usize, usize) {
+    pub fn get_cords(&self, idx: usize) -> (usize, usize) {
         let x = idx % self.width;
         let y = idx / self.width;
         (x,y)
     }
     pub fn get_nannou_cords(&self, x: usize, y: usize, cell_size:f32) -> (f32, f32) {
-        let x = (x as f32 * cell_size - (self.width as f32*cell_size) as f32 /2.0);
-        let y = (y as f32 * cell_size - (self.height as f32*cell_size) as f32 /2.0);
+        let x = x as f32 * cell_size - (self.width as f32*cell_size) as f32 /2.0;
+        let y = y as f32 * cell_size - (self.height as f32*cell_size) as f32 /2.0;
         (x, y)
     }
 

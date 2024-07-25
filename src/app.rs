@@ -23,8 +23,7 @@ pub fn model(app: &App) -> Model {
     let width = 800;
     let height = 800;
     let cell_size = 10.0;
-    let mut cell_grid = CellGrid::new(width/cell_size as usize, height/cell_size as usize);
-    // cell_grid.set(200, 700, Cell::Earth);
+    let cell_grid = CellGrid::new(width/cell_size as usize, height/cell_size as usize);
     Model {
         cell_grid,
         cell_size,
@@ -40,7 +39,7 @@ pub fn view(app: &App, model: &Model, frame: Frame) {
     draw.background().color(BLACK);
 
     for i in 0..model.cell_grid.len() {
-        let (x,y) = model.cell_grid.get_cords(i, model.cell_size);
+        let (x,y) = model.cell_grid.get_cords(i);
         let cell = model.cell_grid.get(x, y).unwrap();
         let (x, y) = model.cell_grid.get_nannou_cords(x, y, model.cell_size);
         match *cell {
